@@ -81,7 +81,7 @@ controller.setupWebserver(process.env.PORT, function (err, webserver) {
 
 controller.webserver.get('/',function(req,res) {
     
-    res.send('<h2>Slack Bot is running!</h2>');
+    res.send('<h2>Welcome to Alton Slackbot!</h2><button href="https://alton-slack.herokuapp.com/login">Login</button>');
     res.status(200);
 
   });
