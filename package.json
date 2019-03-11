@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/aaren-george/slack-app",
   "engines": {
-    "node": "5.1.1"
+    "node": "8.9.4"
   },
   "dependencies": {
     "botkit": "0.0.5",
