@@ -39,7 +39,7 @@
  -> http://howdy.ai/botkit
 
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
+var Config = require('./config')
 /* Uses the slack button feature to offer a real time bot to multiple teams */
 var Botkit = require('botkit');
 
@@ -63,12 +63,12 @@ if (process.env.MONGOLAB_URI) {
 var controller = Botkit.slackbot(config).configureSlackApp(
     {
         clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
+        clientSecret: process.env.CLIENT_SECRET, 
         scopes: ['commands'],
     }
 );
 
-controller.setupWebserver(process.env.PORT, function (err, webserver) {
+controller.setupWebserver(3000, function (err, webserver) {
     controller.createWebhookEndpoints(controller.webserver);
 
     controller.createOauthEndpoints(controller.webserver, function (err, req, res) {
@@ -87,13 +87,15 @@ controller.setupWebserver(process.env.PORT, function (err, webserver) {
 
 controller.on('slash_command', function (slashCommand, message) {
 
-    switch (message.command) {
-        case "/echo": //handle the `/echo` slash command. We might have others assigned to this app too!
+    switch (message
+        .command) {
+        case "/test": //handle the `/echo` slash command. We might have others assigned to this app too!
             // The rules are simple: If there is no text following the command, treat it as though they had requested "help"
             // Otherwise just echo back to them what they sent us.
 
             // but first, let's make sure the token matches!
             if (message.token !== process.env.VERIFICATION_TOKEN) return; //just ignore it.
+            //if (message.token !== ) return; //just ignore it.
 
             // if no text was supplied, treat it as a help command
             if (message.text === "" || message.text === "help") {
