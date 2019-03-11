@@ -41,6 +41,7 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /* Uses the slack button feature to offer a real time bot to multiple teams */
 var Botkit = require('botkit');
+const home = require('./home.html');
 
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.PORT || !process.env.VERIFICATION_TOKEN) {
     console.log('Error: Specify CLIENT_ID, CLIENT_SECRET, VERIFICATION_TOKEN and PORT in environment');
@@ -81,7 +82,8 @@ controller.setupWebserver(process.env.PORT, function (err, webserver) {
 
 controller.webserver.get('/',function(req,res) {
     
-    res.send(`<h2>Welcome to Alton Slackbot!</h2><form><input type="button" value="Login" onclick="window.open('https://alton-slack.herokuapp.com/login')" /></form>`);
+    //res.send(`<h2>Welcome to Alton Slackbot!</h2><form><input type="button" value="Login" onclick="window.open('https://alton-slack.herokuapp.com/login')" /></form>`);
+    res.sendFile('home.html', {root: __dirname })
     res.status(200);
 
   });
