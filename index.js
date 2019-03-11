@@ -79,9 +79,10 @@ controller.setupWebserver(process.env.PORT, function (err, webserver) {
     });
 });
 
-webserver.get('https://alton-slack.herokuapp.com/',function(req,res) {
-
+controller.webserver.get('/',function(req,res) {
+    
     res.send('<h2>Slack Bot is running!</h2>');
+    res.status(200);
 
   });
 
