@@ -84,9 +84,9 @@ controller.webserver.use('/static', express.static('public'));
 
 controller.webserver.get('/', function(req,res) {
     
-    res.send(`<h2>Welcome to Alton Slackbot!</h2><form><input type="button" value="Login" onclick="window.open('https://alton-slack.herokuapp.com/login')" /></form>`);
-    //res.redirect('/static/index.html');
-    res.status(200);
+    //res.send(`<h2>Welcome to Alton Slackbot!</h2><form><input type="button" value="Login" onclick="window.open('https://alton-slack.herokuapp.com/login')" /></form>`);
+    res.redirect('https://alton-slack.herokuapp.com/static/index.html');
+    // res.status(200);
 
   });
 
